@@ -17,3 +17,15 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('login','Authcontroller@login');
+Route::post('register','Authcontroller@register');
+Route::middleware('auth:api')->group(function (){
+    Route::get('view','ProductController@view');
+    Route::get('show_my_products','ProductController@show_my_products');
+    Route::post('create','ProductController@store');
+    Route::post('show_single_product','ProductController@show_single_product');
+    Route::post('update','ProductController@update');
+    Route::post('serach','ProductController@serach');
+
+});
